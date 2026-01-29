@@ -1,0 +1,13 @@
+
+App Icon Description for Glasscast Weather App:
+
+Background: Dark gradient from #0F172A to #334155
+Main Element: White translucent cloud in center
+Weather Elements: Blue raindrops below cloud
+Sun Rays: Golden rays behind cloud
+Style: Glassmorphism with transparency and blur effects
+
+To create the actual icon:
+1. Install Pillow: pip install Pillow
+2. Run: python create_icon.py
+3. Or use any image editor to create a 1024x1024 PNG with the above description

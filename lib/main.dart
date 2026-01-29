@@ -5,6 +5,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:glasscast/routes/app_pages.dart';
 import 'package:glasscast/routes/routes.dart';
 import 'package:glasscast/utils/app_utils.dart';
+import 'package:glasscast/core/services/location_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/config/env.dart';
@@ -25,6 +26,8 @@ Future<void> main() async {
   // Setup notifications if user is logged in
   if (hasSession) {
     await AppUtils.setupNotifications();
+    // Request notification permission
+    await LocationService.requestNotificationPermission();
   }
 
   runApp(
