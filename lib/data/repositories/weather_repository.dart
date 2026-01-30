@@ -41,6 +41,7 @@ class WeatherRepository {
     );
     return res.data;
   }
+
   Future<Map<String, dynamic>> getForecast(double lat, double lon) async {
     final res = await DioClient.dio.get(
       ApiConstants.forecast,

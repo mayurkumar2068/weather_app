@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 enum TempUnit { celsius, fahrenheit }
 
 final settingsProvider =
-StateNotifierProvider<SettingsViewModel, TempUnit>((ref) {
+    StateNotifierProvider<SettingsViewModel, TempUnit>((ref) {
   return SettingsViewModel();
 });
 
@@ -11,8 +11,7 @@ class SettingsViewModel extends StateNotifier<TempUnit> {
   SettingsViewModel() : super(TempUnit.celsius);
 
   void toggleUnit() {
-    state =
-    state == TempUnit.celsius ? TempUnit.fahrenheit : TempUnit.celsius;
+    state = state == TempUnit.celsius ? TempUnit.fahrenheit : TempUnit.celsius;
   }
 
   String get unitSymbol => state == TempUnit.celsius ? "°C" : "°F";

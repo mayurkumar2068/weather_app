@@ -90,7 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  
+
                   // App Title
                   const Text(
                     "Glasscast",
@@ -248,7 +248,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               onPressed: () {
                                 setState(() {
-                                  obscureConfirmPassword = !obscureConfirmPassword;
+                                  obscureConfirmPassword =
+                                      !obscureConfirmPassword;
                                 });
                               },
                             ),

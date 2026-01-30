@@ -31,7 +31,8 @@ class MainNavigationScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildGlassBottomNavBar(BuildContext context, WidgetRef ref, int currentIndex) {
+  Widget _buildGlassBottomNavBar(
+      BuildContext context, WidgetRef ref, int currentIndex) {
     return Container(
       height: 85,
       decoration: BoxDecoration(
@@ -59,7 +60,8 @@ class MainNavigationScreen extends ConsumerWidget {
             child: SafeArea(
               minimum: const EdgeInsets.only(bottom: 2),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -68,21 +70,24 @@ class MainNavigationScreen extends ConsumerWidget {
                       label: "Home",
                       index: 0,
                       currentIndex: currentIndex,
-                      onTap: () => ref.read(currentTabProvider.notifier).state = 0,
+                      onTap: () =>
+                          ref.read(currentTabProvider.notifier).state = 0,
                     ),
                     _buildNavItem(
                       icon: Icons.search_rounded,
                       label: "Search",
                       index: 1,
                       currentIndex: currentIndex,
-                      onTap: () => ref.read(currentTabProvider.notifier).state = 1,
+                      onTap: () =>
+                          ref.read(currentTabProvider.notifier).state = 1,
                     ),
                     _buildNavItem(
                       icon: Icons.settings_rounded,
                       label: "Settings",
                       index: 2,
                       currentIndex: currentIndex,
-                      onTap: () => ref.read(currentTabProvider.notifier).state = 2,
+                      onTap: () =>
+                          ref.read(currentTabProvider.notifier).state = 2,
                     ),
                   ],
                 ),
@@ -102,7 +107,7 @@ class MainNavigationScreen extends ConsumerWidget {
     required VoidCallback onTap,
   }) {
     final isActive = index == currentIndex;
-    
+
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
@@ -110,12 +115,15 @@ class MainNavigationScreen extends ConsumerWidget {
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
           decoration: BoxDecoration(
-            color: isActive ? Colors.white.withOpacity(0.25) : Colors.transparent,
+            color:
+                isActive ? Colors.white.withOpacity(0.25) : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
-            border: isActive ? Border.all(
-              color: Colors.white.withOpacity(0.3),
-              width: 1,
-            ) : null,
+            border: isActive
+                ? Border.all(
+                    color: Colors.white.withOpacity(0.3),
+                    width: 1,
+                  )
+                : null,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

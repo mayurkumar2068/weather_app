@@ -4,7 +4,7 @@ import '../data/repositories/city_repository.dart';
 import 'selected_city_provider.dart';
 
 final cityProvider =
-StateNotifierProvider<CityViewModel, AsyncValue<List<CityModel>>>((ref) {
+    StateNotifierProvider<CityViewModel, AsyncValue<List<CityModel>>>((ref) {
   return CityViewModel(ref);
 });
 
@@ -36,7 +36,7 @@ class CityViewModel extends StateNotifier<AsyncValue<List<CityModel>>> {
     try {
       final current = state.value ?? [];
       final exists = current.any(
-            (c) => c.name.toLowerCase() == city.name.toLowerCase(),
+        (c) => c.name.toLowerCase() == city.name.toLowerCase(),
       );
       if (exists) return;
       final updated = [...current, city];
@@ -59,7 +59,7 @@ class CityViewModel extends StateNotifier<AsyncValue<List<CityModel>>> {
       final selected = ref.read(selectedCityProvider);
       if (selected != null && selected.id == id) {
         ref.read(selectedCityProvider.notifier).state =
-        updated.isNotEmpty ? updated.first : null;
+            updated.isNotEmpty ? updated.first : null;
       }
     } catch (e, st) {
       state = AsyncError(e, st);

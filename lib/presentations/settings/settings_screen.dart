@@ -99,7 +99,9 @@ class SettingsScreen extends ConsumerWidget {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    unit == TempUnit.celsius ? "Celsius" : "Fahrenheit",
+                                    unit == TempUnit.celsius
+                                        ? "Celsius"
+                                        : "Fahrenheit",
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.white.withOpacity(0.7),
@@ -111,10 +113,13 @@ class SettingsScreen extends ConsumerWidget {
                             Switch(
                               value: unit == TempUnit.fahrenheit,
                               onChanged: (_) {
-                                ref.read(settingsProvider.notifier).toggleUnit();
+                                ref
+                                    .read(settingsProvider.notifier)
+                                    .toggleUnit();
                               },
                               activeColor: const Color(0xFF3B82F6),
-                              activeTrackColor: const Color(0xFF3B82F6).withOpacity(0.3),
+                              activeTrackColor:
+                                  const Color(0xFF3B82F6).withOpacity(0.3),
                               inactiveThumbColor: Colors.white.withOpacity(0.7),
                               inactiveTrackColor: Colors.white.withOpacity(0.2),
                             ),
@@ -161,10 +166,13 @@ class SettingsScreen extends ConsumerWidget {
                             Switch(
                               value: appSettings.notificationsEnabled,
                               onChanged: (value) {
-                                ref.read(appSettingsProvider.notifier).toggleNotifications();
+                                ref
+                                    .read(appSettingsProvider.notifier)
+                                    .toggleNotifications();
                               },
                               activeColor: const Color(0xFF3B82F6),
-                              activeTrackColor: const Color(0xFF3B82F6).withOpacity(0.3),
+                              activeTrackColor:
+                                  const Color(0xFF3B82F6).withOpacity(0.3),
                               inactiveThumbColor: Colors.white.withOpacity(0.7),
                               inactiveTrackColor: Colors.white.withOpacity(0.2),
                             ),
@@ -211,10 +219,13 @@ class SettingsScreen extends ConsumerWidget {
                             Switch(
                               value: appSettings.aiSummaryEnabled,
                               onChanged: (value) {
-                                ref.read(appSettingsProvider.notifier).toggleAiSummary();
+                                ref
+                                    .read(appSettingsProvider.notifier)
+                                    .toggleAiSummary();
                               },
                               activeColor: const Color(0xFF3B82F6),
-                              activeTrackColor: const Color(0xFF3B82F6).withOpacity(0.3),
+                              activeTrackColor:
+                                  const Color(0xFF3B82F6).withOpacity(0.3),
                               inactiveThumbColor: Colors.white.withOpacity(0.7),
                               inactiveTrackColor: Colors.white.withOpacity(0.2),
                             ),
@@ -244,10 +255,14 @@ class SettingsScreen extends ConsumerWidget {
                             appSettings.userEmail,
                             (name, email) {
                               if (name.isNotEmpty) {
-                                ref.read(appSettingsProvider.notifier).updateUserName(name);
+                                ref
+                                    .read(appSettingsProvider.notifier)
+                                    .updateUserName(name);
                               }
                               if (email.isNotEmpty) {
-                                ref.read(appSettingsProvider.notifier).updateUserEmail(email);
+                                ref
+                                    .read(appSettingsProvider.notifier)
+                                    .updateUserEmail(email);
                               }
                             },
                           );
@@ -266,8 +281,10 @@ class SettingsScreen extends ConsumerWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    appSettings.userName.isNotEmpty 
-                                        ? appSettings.userName.substring(0, 1).toUpperCase()
+                                    appSettings.userName.isNotEmpty
+                                        ? appSettings.userName
+                                            .substring(0, 1)
+                                            .toUpperCase()
                                         : "U",
                                     style: const TextStyle(
                                       fontSize: 18,
@@ -302,7 +319,8 @@ class SettingsScreen extends ConsumerWidget {
                                 ),
                               ),
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 6),
                                 decoration: BoxDecoration(
                                   color: const Color(0xFF10B981),
                                   borderRadius: BorderRadius.circular(12),
@@ -338,7 +356,10 @@ class SettingsScreen extends ConsumerWidget {
                                 height: 32,
                                 decoration: BoxDecoration(
                                   gradient: const LinearGradient(
-                                    colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                                    colors: [
+                                      Color(0xFFFFD700),
+                                      Color(0xFFFFA500)
+                                    ],
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
@@ -360,9 +381,12 @@ class SettingsScreen extends ConsumerWidget {
                                 ),
                               ),
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 6),
                                 decoration: BoxDecoration(
-                                  color: appSettings.isPro ? const Color(0xFF3B82F6) : Colors.white.withOpacity(0.2),
+                                  color: appSettings.isPro
+                                      ? const Color(0xFF3B82F6)
+                                      : Colors.white.withOpacity(0.2),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(

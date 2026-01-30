@@ -21,13 +21,12 @@ class AppPages {
       name: Routes.home,
       page: () => const MainNavigationScreen(),
     ),
-    GetPage(name: Routes.settings,
-        page: ()=> const SettingsScreen()
-    ),
+    GetPage(name: Routes.settings, page: () => const SettingsScreen()),
     GetPage(
       name: Routes.searchCity,
       page: () => const CitySearchScreen(),
     ),
-    GetPage(name: Routes.weatherDetail, page: ()=> const WeatherDetailScreen()),
+    GetPage(
+        name: Routes.weatherDetail, page: () => const WeatherDetailScreen()),
   ];
 }

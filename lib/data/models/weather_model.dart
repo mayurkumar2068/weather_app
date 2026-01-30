@@ -4,12 +4,11 @@ class WeatherModel {
   final double minTemp;
   final double maxTemp;
 
-  WeatherModel({
-    required this.temp,
-    required this.description,
-    required this.minTemp,
-    required this.maxTemp
-  });
+  WeatherModel(
+      {required this.temp,
+      required this.description,
+      required this.minTemp,
+      required this.maxTemp});
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
     return WeatherModel(
@@ -19,5 +18,4 @@ class WeatherModel {
       description: json['weather'][0]['description'],
     );
   }
-
 }

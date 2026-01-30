@@ -2,10 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/repositories/weather_repository.dart';
 
 final weatherProvider =
-StateNotifierProvider<WeatherViewModel, AsyncValue<Map<String, dynamic>>>(
+    StateNotifierProvider<WeatherViewModel, AsyncValue<Map<String, dynamic>>>(
         (ref) {
-      return WeatherViewModel();
-    });
+  return WeatherViewModel();
+});
 
 class WeatherViewModel extends StateNotifier<AsyncValue<Map<String, dynamic>>> {
   WeatherViewModel() : super(const AsyncLoading());

@@ -62,8 +62,10 @@ class FavoriteCityCard extends StatelessWidget {
 
         final data = snapshot.data!;
         final temp = convertTemp((data['main']['temp'] as num).toDouble());
-        final maxTemp = convertTemp((data['main']['temp_max'] as num).toDouble());
-        final minTemp = convertTemp((data['main']['temp_min'] as num).toDouble());
+        final maxTemp =
+            convertTemp((data['main']['temp_max'] as num).toDouble());
+        final minTemp =
+            convertTemp((data['main']['temp_min'] as num).toDouble());
         final condition = data['weather'][0]['description'];
 
         return GlassContainer(
@@ -95,7 +97,6 @@ class FavoriteCityCard extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   Row(
                     children: [
                       Column(

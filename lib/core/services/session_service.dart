@@ -9,9 +9,7 @@ class SessionService {
       if (session == null) return false;
       final user = session.user;
       final name =
-          user.userMetadata?['name'] ??
-              user.email?.split("@").first ??
-              "User";
+          user.userMetadata?['name'] ?? user.email?.split("@").first ?? "User";
 
       print("User name: $name");
       await SecureStorage.saveString(name);

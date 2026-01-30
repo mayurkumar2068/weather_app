@@ -5,6 +5,7 @@ class SecureStorage {
 
   static const _sessionKey = "supabase_session";
   static const String _userNameKey = "user_name";
+
   /// Save session
   static Future<void> saveSession(String sessionJson) async {
     await _storage.write(key: _sessionKey, value: sessionJson);

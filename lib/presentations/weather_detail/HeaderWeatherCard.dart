@@ -20,7 +20,8 @@ class HeaderWeatherCard extends StatelessWidget {
       child: Column(
         children: [
           Text("${temp.toStringAsFixed(1)}°",
-              style: const TextStyle(fontSize: 64, fontWeight: FontWeight.bold)),
+              style:
+                  const TextStyle(fontSize: 64, fontWeight: FontWeight.bold)),
           Text(condition, style: const TextStyle(fontSize: 18)),
           const SizedBox(height: 4),
           Text("H: ${max.toStringAsFixed(0)}°  L: ${min.toStringAsFixed(0)}°"),

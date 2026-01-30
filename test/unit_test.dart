@@ -28,7 +28,7 @@ void main() {
       final password1 = 'password123';
       final password2 = 'password123';
       final password3 = 'different';
-      
+
       expect(password1 == password2, true);
       expect(password1 == password3, false);
     });

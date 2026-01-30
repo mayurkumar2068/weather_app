@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _showForgotPasswordDialog() {
     final emailController = TextEditingController();
-    
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -76,11 +76,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   fillColor: Colors.white.withOpacity(0.1),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.3)),
+                    borderSide:
+                        BorderSide(color: Colors.white.withOpacity(0.3)),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.3)),
+                    borderSide:
+                        BorderSide(color: Colors.white.withOpacity(0.3)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -103,9 +105,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 final email = emailController.text.trim();
                 if (email.isNotEmpty) {
                   try {
-                    await Supabase.instance.client.auth.resetPasswordForEmail(email);
+                    await Supabase.instance.client.auth
+                        .resetPasswordForEmail(email);
                     Navigator.of(context).pop();
-                    UIHelper.showSuccess("Reset Link Sent", "Check your email for password reset instructions");
+                    UIHelper.showSuccess("Reset Link Sent",
+                        "Check your email for password reset instructions");
                   } catch (e) {
                     UIHelper.showError("Error", "Failed to send reset email");
                   }
@@ -173,9 +177,12 @@ class _LoginScreenState extends State<LoginScreen> {
         width: double.infinity,
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF3B82F6).withOpacity(0.2) : Colors.white.withOpacity(0.1),
+          color: isSelected
+              ? const Color(0xFF3B82F6).withOpacity(0.2)
+              : Colors.white.withOpacity(0.1),
           borderRadius: BorderRadius.circular(8),
-          border: isSelected ? Border.all(color: const Color(0xFF3B82F6)) : null,
+          border:
+              isSelected ? Border.all(color: const Color(0xFF3B82F6)) : null,
         ),
         child: Row(
           children: [
@@ -333,7 +340,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  
+
                   // App Title
                   const Text(
                     "Glasscast",
@@ -546,7 +553,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   GestureDetector(
                     onTap: _showLanguageDialog,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
@@ -626,4 +634,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

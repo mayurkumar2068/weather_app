@@ -64,7 +64,8 @@ class AppSettingsNotifier extends StateNotifier<AppSettings> {
 
   Future<void> toggleNotifications() async {
     final newValue = !state.notificationsEnabled;
-    await _storage.write(key: 'notifications_enabled', value: newValue.toString());
+    await _storage.write(
+        key: 'notifications_enabled', value: newValue.toString());
     state = state.copyWith(notificationsEnabled: newValue);
   }
 
@@ -91,6 +92,7 @@ class AppSettingsNotifier extends StateNotifier<AppSettings> {
   }
 }
 
-final appSettingsProvider = StateNotifierProvider<AppSettingsNotifier, AppSettings>((ref) {
+final appSettingsProvider =
+    StateNotifierProvider<AppSettingsNotifier, AppSettings>((ref) {
   return AppSettingsNotifier();
 });

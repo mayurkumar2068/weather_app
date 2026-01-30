@@ -79,8 +79,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   String formatTime() {
     final now = DateTime.now();
-    final weekday = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][now.weekday - 1];
-    final hour = now.hour > 12 ? now.hour - 12 : (now.hour == 0 ? 12 : now.hour);
+    final weekday = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
+    ][now.weekday - 1];
+    final hour =
+        now.hour > 12 ? now.hour - 12 : (now.hour == 0 ? 12 : now.hour);
     final minute = now.minute.toString().padLeft(2, '0');
     final period = now.hour >= 12 ? 'PM' : 'AM';
     return '$weekday, $hour:$minute $period';
@@ -180,11 +189,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                     data: (weatherData) {
                       final current = weatherData['list'][0];
-                      final temp = convertTemp(current['main']['temp'].toDouble());
+                      final temp =
+                          convertTemp(current['main']['temp'].toDouble());
                       final condition = current['weather'][0]['main'];
                       final description = current['weather'][0]['description'];
-                      final high = convertTemp(current['main']['temp_max'].toDouble());
-                      final low = convertTemp(current['main']['temp_min'].toDouble());
+                      final high =
+                          convertTemp(current['main']['temp_max'].toDouble());
+                      final low =
+                          convertTemp(current['main']['temp_min'].toDouble());
 
                       return Column(
                         children: [
@@ -209,9 +221,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                           // Condition
                           Text(
-                            description.split(' ').map((word) => 
-                              word[0].toUpperCase() + word.substring(1)
-                            ).join(' '),
+                            description
+                                .split(' ')
+                                .map((word) =>
+                                    word[0].toUpperCase() + word.substring(1))
+                                .join(' '),
                             style: const TextStyle(
                               fontSize: 20,
                               color: Colors.white,
@@ -242,7 +256,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ],
                           ),
                           const SizedBox(height: 16),
-                          
+
                           Text(
                             "AI: Perfect for a light jacket today",
                             style: TextStyle(
@@ -261,7 +275,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text(
                                       "5-Day Forecast",
@@ -272,7 +287,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       ),
                                     ),
                                     TextButton(
-                                      onPressed: () => Get.toNamed(Routes.weatherDetail),
+                                      onPressed: () =>
+                                          Get.toNamed(Routes.weatherDetail),
                                       child: Text(
                                         "DETAILS",
                                         style: TextStyle(
@@ -286,23 +302,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   ],
                                 ),
                                 const SizedBox(height: 16),
-                                
+
                                 // Forecast days
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: List.generate(5, (index) {
-                                    final dayData = weatherData['list'][index * 8];
-                                    final dayTemp = convertTemp(dayData['main']['temp'].toDouble());
-                                    final dayCondition = dayData['weather'][0]['main'];
-                                    final days = ['WED', 'THU', 'FRI', 'SAT', 'SUN'];
-                                    
+                                    final dayData =
+                                        weatherData['list'][index * 8];
+                                    final dayTemp = convertTemp(
+                                        dayData['main']['temp'].toDouble());
+                                    final dayCondition =
+                                        dayData['weather'][0]['main'];
+                                    final days = [
+                                      'WED',
+                                      'THU',
+                                      'FRI',
+                                      'SAT',
+                                      'SUN'
+                                    ];
+
                                     return Column(
                                       children: [
                                         Text(
                                           days[index],
                                           style: TextStyle(
                                             fontSize: 12,
-                                            color: Colors.white.withOpacity(0.7),
+                                            color:
+                                                Colors.white.withOpacity(0.7),
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
@@ -324,7 +351,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                           "${(dayTemp - 5).round()}°",
                                           style: TextStyle(
                                             fontSize: 14,
-                                            color: Colors.white.withOpacity(0.6),
+                                            color:
+                                                Colors.white.withOpacity(0.6),
                                           ),
                                         ),
                                       ],
@@ -348,7 +376,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         children: [
                                           Icon(
                                             Icons.water_drop_outlined,
-                                            color: Colors.white.withOpacity(0.7),
+                                            color:
+                                                Colors.white.withOpacity(0.7),
                                             size: 20,
                                           ),
                                           const SizedBox(width: 8),
@@ -356,7 +385,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                             "HUMIDITY",
                                             style: TextStyle(
                                               fontSize: 12,
-                                              color: Colors.white.withOpacity(0.7),
+                                              color:
+                                                  Colors.white.withOpacity(0.7),
                                               fontWeight: FontWeight.w500,
                                               letterSpacing: 1,
                                             ),
@@ -386,7 +416,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         children: [
                                           Icon(
                                             Icons.air,
-                                            color: Colors.white.withOpacity(0.7),
+                                            color:
+                                                Colors.white.withOpacity(0.7),
                                             size: 20,
                                           ),
                                           const SizedBox(width: 8),
@@ -394,7 +425,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                             "WIND",
                                             style: TextStyle(
                                               fontSize: 12,
-                                              color: Colors.white.withOpacity(0.7),
+                                              color:
+                                                  Colors.white.withOpacity(0.7),
                                               fontWeight: FontWeight.w500,
                                               letterSpacing: 1,
                                             ),

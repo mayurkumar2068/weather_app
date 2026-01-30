@@ -5,7 +5,8 @@ class CityRepository {
   final _client = Supabase.instance.client;
 
   Future<List<CityModel>> getFavorites() async {
-    final res = await _client.from('favorite_cities').select().order('created_at');
+    final res =
+        await _client.from('favorite_cities').select().order('created_at');
     return (res as List).map((e) => CityModel.fromJson(e)).toList();
   }
 
@@ -25,4 +26,3 @@ class CityRepository {
     await _client.from('favorite_cities').delete().eq('id', id);
   }
 }
-

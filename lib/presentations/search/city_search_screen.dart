@@ -80,7 +80,8 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: GlassContainer(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   child: TextField(
                     controller: searchCtrl,
                     style: const TextStyle(color: Colors.white),
@@ -154,8 +155,18 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                             children: cities.map((city) {
                               // Mock weather data for saved cities
                               final mockTemp = 14 + (city.name.hashCode % 20);
-                              final mockCondition = ["Light Rain", "Clear", "Cloudy", "Sunny"][city.name.hashCode % 4];
-                              final mockTime = ["10:42 PM", "06:45 AM", "05:42 PM", "11:42 PM"][city.name.hashCode % 4];
+                              final mockCondition = [
+                                "Light Rain",
+                                "Clear",
+                                "Cloudy",
+                                "Sunny"
+                              ][city.name.hashCode % 4];
+                              final mockTime = [
+                                "10:42 PM",
+                                "06:45 AM",
+                                "05:42 PM",
+                                "11:42 PM"
+                              ][city.name.hashCode % 4];
 
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 12),
@@ -167,14 +178,16 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                       // City info
                                       Expanded(
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Row(
                                               children: [
                                                 Container(
                                                   width: 8,
                                                   height: 8,
-                                                  decoration: const BoxDecoration(
+                                                  decoration:
+                                                      const BoxDecoration(
                                                     color: Color(0xFF10B981),
                                                     shape: BoxShape.circle,
                                                   ),
@@ -195,13 +208,14 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                               "$mockTime • $mockCondition",
                                               style: TextStyle(
                                                 fontSize: 14,
-                                                color: Colors.white.withOpacity(0.7),
+                                                color: Colors.white
+                                                    .withOpacity(0.7),
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      
+
                                       // Temperature and delete
                                       Row(
                                         children: [
@@ -217,13 +231,17 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                           GestureDetector(
                                             onTap: () {
                                               // Only delete if the city has a valid ID (meaning it's saved in database)
-                                              if (city.id != null && city.id!.isNotEmpty) {
-                                                ref.read(cityProvider.notifier).deleteCity(city.id!);
+                                              if (city.id != null &&
+                                                  city.id!.isNotEmpty) {
+                                                ref
+                                                    .read(cityProvider.notifier)
+                                                    .deleteCity(city.id!);
                                               }
                                             },
                                             child: Icon(
                                               Icons.close,
-                                              color: Colors.white.withOpacity(0.7),
+                                              color:
+                                                  Colors.white.withOpacity(0.7),
                                               size: 20,
                                             ),
                                           ),
@@ -251,10 +269,10 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        
                         searchState.when(
                           loading: () => const Center(
-                            child: CircularProgressIndicator(color: Colors.white),
+                            child:
+                                CircularProgressIndicator(color: Colors.white),
                           ),
                           error: (e, _) => Center(
                             child: Text(
@@ -305,7 +323,8 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                         height: 32,
                                         decoration: BoxDecoration(
                                           color: const Color(0xFF3B82F6),
-                                          borderRadius: BorderRadius.circular(8),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
                                         ),
                                         child: const Icon(
                                           Icons.add,
@@ -315,17 +334,24 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                       ),
                                       onTap: () async {
                                         // Save favorite
-                                        await ref.read(cityProvider.notifier).addCity(city);
+                                        await ref
+                                            .read(cityProvider.notifier)
+                                            .addCity(city);
 
                                         // Set selected city
-                                        ref.read(selectedCityProvider.notifier).state = city;
+                                        ref
+                                            .read(selectedCityProvider.notifier)
+                                            .state = city;
 
                                         // Show success message
                                         if (context.mounted) {
-                                          ScaffoldMessenger.of(context).showSnackBar(
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
                                             SnackBar(
-                                              content: Text("${city.name} added to favorites"),
-                                              backgroundColor: const Color(0xFF10B981),
+                                              content: Text(
+                                                  "${city.name} added to favorites"),
+                                              backgroundColor:
+                                                  const Color(0xFF10B981),
                                             ),
                                           );
                                         }

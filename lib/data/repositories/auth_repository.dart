@@ -20,5 +20,3 @@ class AuthViewModel {
     return _service.logout();
   }
 }
-
-

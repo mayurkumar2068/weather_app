@@ -12,22 +12,22 @@ class LocationService {
 
       // Check location permission
       LocationPermission permission = await Geolocator.checkPermission();
-      
+
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
           return false;
         }
       }
-      
+
       if (permission == LocationPermission.deniedForever) {
         // Open app settings
         await openAppSettings();
         return false;
       }
 
-      return permission == LocationPermission.whileInUse || 
-             permission == LocationPermission.always;
+      return permission == LocationPermission.whileInUse ||
+          permission == LocationPermission.always;
     } catch (e) {
       print('Error requesting location permission: $e');
       return false;
@@ -45,7 +45,7 @@ class LocationService {
         desiredAccuracy: LocationAccuracy.high,
         timeLimit: const Duration(seconds: 10),
       );
-      
+
       return position;
     } catch (e) {
       print('Error getting current location: $e');

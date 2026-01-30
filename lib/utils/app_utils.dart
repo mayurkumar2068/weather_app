@@ -11,21 +11,23 @@ class AppUtils {
       if (user != null) {
         // Subscribe to weather alerts channel
         final channel = Supabase.instance.client.channel('weather_alerts');
-        
-        channel.onPostgresChanges(
-          event: PostgresChangeEvent.all,
-          schema: 'public',
-          table: 'weather_alerts',
-          filter: PostgresChangeFilter(
-            type: PostgresChangeFilterType.eq,
-            column: 'user_id',
-            value: user.id,
-          ),
-          callback: (payload) {
-            // Handle real-time weather alerts
-            _handleWeatherAlert(payload);
-          },
-        ).subscribe();
+
+        channel
+            .onPostgresChanges(
+              event: PostgresChangeEvent.all,
+              schema: 'public',
+              table: 'weather_alerts',
+              filter: PostgresChangeFilter(
+                type: PostgresChangeFilterType.eq,
+                column: 'user_id',
+                value: user.id,
+              ),
+              callback: (payload) {
+                // Handle real-time weather alerts
+                _handleWeatherAlert(payload);
+              },
+            )
+            .subscribe();
       }
     } catch (e) {
       debugPrint('Error setting up notifications: $e');
@@ -44,13 +46,14 @@ class AppUtils {
       // For iOS
       const iosUrl = 'https://apps.apple.com/app/id123456789';
       // For Android
-      const androidUrl = 'https://play.google.com/store/apps/details?id=com.example.glasscast';
-      
+      const androidUrl =
+          'https://play.google.com/store/apps/details?id=com.example.glasscast';
+
       // Try to launch the appropriate store
-      final Uri url = Uri.parse(
-        Theme.of(context).platform == TargetPlatform.iOS ? iosUrl : androidUrl
-      );
-      
+      final Uri url = Uri.parse(Theme.of(context).platform == TargetPlatform.iOS
+          ? iosUrl
+          : androidUrl);
+
       if (await canLaunchUrl(url)) {
         await launchUrl(url, mode: LaunchMode.externalApplication);
       } else {
@@ -66,7 +69,7 @@ class AppUtils {
     try {
       const url = 'https://glasscast.app/privacy';
       final Uri uri = Uri.parse(url);
-      
+
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
@@ -80,9 +83,10 @@ class AppUtils {
   // Share app functionality
   static Future<void> shareApp(BuildContext context) async {
     try {
-      const text = 'Check out Glasscast - AI-powered weather insights! Download now: https://glasscast.app';
+      const text =
+          'Check out Glasscast - AI-powered weather insights! Download now: https://glasscast.app';
       await Clipboard.setData(const ClipboardData(text: text));
-      
+
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -218,7 +222,8 @@ class AppUtils {
   }
 
   // Edit profile dialog
-  static void showEditProfileDialog(BuildContext context, String currentName, String currentEmail, Function(String, String) onSave) {
+  static void showEditProfileDialog(BuildContext context, String currentName,
+      String currentEmail, Function(String, String) onSave) {
     final nameController = TextEditingController(text: currentName);
     final emailController = TextEditingController(text: currentEmail);
 
@@ -245,7 +250,8 @@ class AppUtils {
                   labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.3)),
+                    borderSide:
+                        BorderSide(color: Colors.white.withOpacity(0.3)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -262,7 +268,8 @@ class AppUtils {
                   labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.3)),
+                    borderSide:
+                        BorderSide(color: Colors.white.withOpacity(0.3)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -349,11 +356,12 @@ class AppUtils {
         path: 'support@glasscast.app',
         query: 'subject=Glasscast Support Request',
       );
-      
+
       if (await canLaunchUrl(emailUri)) {
         await launchUrl(emailUri);
       } else {
-        await Clipboard.setData(const ClipboardData(text: 'support@glasscast.app'));
+        await Clipboard.setData(
+            const ClipboardData(text: 'support@glasscast.app'));
         if (context.mounted) {
           _showSuccessSnackBar(context, 'Email copied to clipboard');
         }
@@ -370,11 +378,12 @@ class AppUtils {
         path: 'bugs@glasscast.app',
         query: 'subject=Bug Report - Glasscast',
       );
-      
+
       if (await canLaunchUrl(emailUri)) {
         await launchUrl(emailUri);
       } else {
-        await Clipboard.setData(const ClipboardData(text: 'bugs@glasscast.app'));
+        await Clipboard.setData(
+            const ClipboardData(text: 'bugs@glasscast.app'));
         if (context.mounted) {
           _showSuccessSnackBar(context, 'Email copied to clipboard');
         }

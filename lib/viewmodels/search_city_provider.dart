@@ -3,7 +3,8 @@ import 'package:glasscast/data/repositories/city_search_repository.dart';
 import '../data/models/city_model.dart';
 
 final citySearchProvider =
-StateNotifierProvider<CitySearchViewModel, AsyncValue<List<CityModel>>>((ref) {
+    StateNotifierProvider<CitySearchViewModel, AsyncValue<List<CityModel>>>(
+        (ref) {
   return CitySearchViewModel();
 });
 

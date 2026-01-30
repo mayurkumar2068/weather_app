@@ -10,7 +10,8 @@ class WeatherDetailScreen extends ConsumerStatefulWidget {
   const WeatherDetailScreen({super.key});
 
   @override
-  ConsumerState<WeatherDetailScreen> createState() => _WeatherDetailScreenState();
+  ConsumerState<WeatherDetailScreen> createState() =>
+      _WeatherDetailScreenState();
 }
 
 class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
@@ -22,7 +23,7 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
     super.initState();
     // Use the selected city from provider
     city = ref.read(selectedCityProvider);
-    
+
     // If still null, create a default city (San Francisco)
     city ??= CityModel(
       name: "San Francisco",
@@ -99,11 +100,13 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                   ],
                 ),
               ),
-              
+
               // Weather Content
               Expanded(
                 child: FutureBuilder(
-                  future: city != null ? repo.getWeather(city!.lat, city!.lon) : null,
+                  future: city != null
+                      ? repo.getWeather(city!.lat, city!.lon)
+                      : null,
                   builder: (context, snapshot) {
                     if (city == null) {
                       return Center(
@@ -171,7 +174,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
 
                     final weatherData = snapshot.data!;
                     final current = weatherData['list'][0];
-                    final temp = convertTemp(current['main']['temp'].toDouble());
+                    final temp =
+                        convertTemp(current['main']['temp'].toDouble());
                     final condition = current['weather'][0]['main'];
                     final description = current['weather'][0]['description'];
 
@@ -200,9 +204,12 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  description.split(' ').map((word) => 
-                                    word[0].toUpperCase() + word.substring(1)
-                                  ).join(' '),
+                                  description
+                                      .split(' ')
+                                      .map((word) =>
+                                          word[0].toUpperCase() +
+                                          word.substring(1))
+                                      .join(' '),
                                   style: const TextStyle(
                                     fontSize: 18,
                                     color: Colors.white,
@@ -378,30 +385,40 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                     scrollDirection: Axis.horizontal,
                                     itemCount: 8,
                                     itemBuilder: (context, index) {
-                                      final hourData = weatherData['list'][index];
-                                      final hourTemp = convertTemp(hourData['main']['temp'].toDouble());
-                                      final hourCondition = hourData['weather'][0]['main'];
-                                      final hour = DateTime.fromMillisecondsSinceEpoch(
+                                      final hourData =
+                                          weatherData['list'][index];
+                                      final hourTemp = convertTemp(
+                                          hourData['main']['temp'].toDouble());
+                                      final hourCondition =
+                                          hourData['weather'][0]['main'];
+                                      final hour =
+                                          DateTime.fromMillisecondsSinceEpoch(
                                         hourData['dt'] * 1000,
                                       ).hour;
-                                      
+
                                       return Container(
                                         width: 60,
-                                        margin: const EdgeInsets.only(right: 16),
+                                        margin:
+                                            const EdgeInsets.only(right: 16),
                                         child: Column(
                                           children: [
                                             Text(
-                                              hour == 0 ? "12 AM" : 
-                                              hour <= 12 ? "$hour AM" : "${hour - 12} PM",
+                                              hour == 0
+                                                  ? "12 AM"
+                                                  : hour <= 12
+                                                      ? "$hour AM"
+                                                      : "${hour - 12} PM",
                                               style: TextStyle(
                                                 fontSize: 12,
-                                                color: Colors.white.withOpacity(0.7),
+                                                color: Colors.white
+                                                    .withOpacity(0.7),
                                               ),
                                             ),
                                             const SizedBox(height: 8),
                                             Text(
                                               getWeatherIcon(hourCondition),
-                                              style: const TextStyle(fontSize: 24),
+                                              style:
+                                                  const TextStyle(fontSize: 24),
                                             ),
                                             const SizedBox(height: 8),
                                             Text(
