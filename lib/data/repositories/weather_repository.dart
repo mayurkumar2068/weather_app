@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:glasscast/core/constants/api_constants.dart';
 
 import '../../core/config/env.dart';
@@ -9,7 +10,9 @@ class WeatherRepository {
     try {
       final apiKey = Env.weatherApiKey;
 
-      print("DEBUG Weather API Key: $apiKey");
+      if (kDebugMode) {
+        debugPrint("DEBUG Weather API Key: $apiKey");
+      }
 
       final res = await DioClient.dio.get(
         ApiConstants.forecast,
@@ -23,8 +26,10 @@ class WeatherRepository {
 
       return res.data;
     } on DioException catch (e) {
-      print("Weather API Error: ${e.response?.data}");
-      print("Status Code: ${e.response?.statusCode}");
+      if (kDebugMode) {
+        debugPrint("Weather API Error: ${e.response?.data}");
+        debugPrint("Status Code: ${e.response?.statusCode}");
+      }
       throw Exception(e.response?.data ?? "Weather API failed");
     }
   }

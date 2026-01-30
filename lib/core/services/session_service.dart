@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../database/storage.dart';
@@ -11,12 +12,16 @@ class SessionService {
       final name =
           user.userMetadata?['name'] ?? user.email?.split("@").first ?? "User";
 
-      print("User name: $name");
+      if (kDebugMode) {
+        debugPrint("User name: $name");
+      }
       await SecureStorage.saveString(name);
 
       return true;
     } catch (e) {
-      print("Session error: $e");
+      if (kDebugMode) {
+        debugPrint("Session error: $e");
+      }
       return false;
     }
   }

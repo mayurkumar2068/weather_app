@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -29,7 +30,9 @@ class LocationService {
       return permission == LocationPermission.whileInUse ||
           permission == LocationPermission.always;
     } catch (e) {
-      print('Error requesting location permission: $e');
+      if (kDebugMode) {
+        debugPrint('Error requesting location permission: $e');
+      }
       return false;
     }
   }
@@ -48,7 +51,9 @@ class LocationService {
 
       return position;
     } catch (e) {
-      print('Error getting current location: $e');
+      if (kDebugMode) {
+        debugPrint('Error getting current location: $e');
+      }
       return null;
     }
   }
@@ -58,7 +63,9 @@ class LocationService {
       PermissionStatus status = await Permission.notification.request();
       return status == PermissionStatus.granted;
     } catch (e) {
-      print('Error requesting notification permission: $e');
+      if (kDebugMode) {
+        debugPrint('Error requesting notification permission: $e');
+      }
       return false;
     }
   }
