@@ -32,7 +32,7 @@ Future<void> main() async {
 
   runApp(
     ProviderScope(
-      child: GlasscastApp(initialRoute: hasSession ? Routes.home : Routes.login),
+      child: GlasscastApp(initialRoute: hasSession ? Routes.home : Routes.home),
     ),
   );
 }

@@ -77,10 +77,11 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
 
               // Search Bar
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: GlassContainer(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+
+                  padding: EdgeInsets.zero,
                   child: TextField(
                     controller: searchCtrl,
                     style: const TextStyle(color: Colors.white),

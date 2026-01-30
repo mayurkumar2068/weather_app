@@ -33,7 +33,7 @@ class MainNavigationScreen extends ConsumerWidget {
 
   Widget _buildGlassBottomNavBar(BuildContext context, WidgetRef ref, int currentIndex) {
     return Container(
-      height: 80,
+      height: 90,
       decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border(
