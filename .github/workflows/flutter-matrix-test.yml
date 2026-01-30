@@ -31,10 +31,18 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
         
-    - name: Setup Flutter
+    - name: Setup Flutter (Specific Version)
+      if: matrix.flutter-version != 'stable'
       uses: subosito/flutter-action@v2
       with:
         flutter-version: ${{ matrix.flutter-version }}
+        channel: 'stable'
+        cache: true
+        
+    - name: Setup Flutter (Stable Channel)
+      if: matrix.flutter-version == 'stable'
+      uses: subosito/flutter-action@v2
+      with:
         channel: 'stable'
         cache: true
         
