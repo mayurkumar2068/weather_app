@@ -33,7 +33,7 @@ class MainNavigationScreen extends ConsumerWidget {
 
   Widget _buildGlassBottomNavBar(BuildContext context, WidgetRef ref, int currentIndex) {
     return Container(
-      height: 90,
+      height: 85,
       decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border(
@@ -57,9 +57,9 @@ class MainNavigationScreen extends ConsumerWidget {
               ),
             ),
             child: SafeArea(
-              minimum: const EdgeInsets.only(bottom: 4),
+              minimum: const EdgeInsets.only(bottom: 2),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -103,12 +103,12 @@ class MainNavigationScreen extends ConsumerWidget {
   }) {
     final isActive = index == currentIndex;
     
-    return Flexible(
+    return Expanded(
       child: GestureDetector(
         onTap: onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
           decoration: BoxDecoration(
             color: isActive ? Colors.white.withOpacity(0.25) : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
@@ -124,18 +124,21 @@ class MainNavigationScreen extends ConsumerWidget {
               Icon(
                 icon,
                 color: Colors.white.withOpacity(isActive ? 1.0 : 0.6),
-                size: isActive ? 22 : 20,
+                size: isActive ? 20 : 18,
               ),
-              const SizedBox(height: 2),
-              Text(
-                label,
-                style: TextStyle(
-                  color: Colors.white.withOpacity(isActive ? 1.0 : 0.6),
-                  fontSize: 10,
-                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+              const SizedBox(height: 1),
+              Flexible(
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(isActive ? 1.0 : 0.6),
+                    fontSize: 9,
+                    fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Flutter build service
+  flutter-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: final
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+    volumes:
+      - ./build-output:/artifacts
+    command: sh -c "cp *.apk *.aab build-info.json /artifacts/ 2>/dev/null || true"
+
+  # Code quality analysis
+  sonarqube:
+    image: sonarqube:community
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
+
+  # Test database for integration tests
+  test-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=glasscast_test
+      - POSTGRES_USER=test_user
+      - POSTGRES_PASSWORD=test_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - test_db_data:/var/lib/postgresql/data
+
+volumes:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_extensions:
+  test_db_data:

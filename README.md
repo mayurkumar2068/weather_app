@@ -48,7 +48,23 @@ The app features four main screens matching the Glasscast design:
 - OpenWeatherMap API key
 - Supabase account
 
-### Installation
+### Quick Setup with Make
+
+```bash
+# Initial project setup
+make setup
+
+# Run tests
+make test
+
+# Build debug version
+make build-debug
+
+# Deploy to development
+make deploy-dev
+```
+
+### Manual Installation
 
 1. **Clone the repository**
    ```bash
@@ -102,6 +118,59 @@ The app features four main screens matching the Glasscast design:
    ```bash
    flutter run
    ```
+
+## 🔄 CI/CD Pipeline
+
+This project includes a comprehensive CI/CD pipeline with GitHub Actions for automated testing, building, and deployment.
+
+### Pipeline Features
+
+- ✅ **Continuous Integration**: Automated testing and code quality checks
+- ✅ **Multi-platform Builds**: Android APK/AAB and iOS builds
+- ✅ **Security Scanning**: Vulnerability detection and dependency audits
+- ✅ **Automated Deployment**: Development and production deployments
+- ✅ **Code Quality**: Formatting, linting, and coverage reporting
+- ✅ **Dependency Management**: Automated updates and security monitoring
+
+### Workflows
+
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| **Main CI/CD** | Push to main/develop, PRs, Releases | Full pipeline with testing, building, and deployment |
+| **Code Quality** | Push, PRs | Static analysis, coverage, and quality metrics |
+| **Matrix Testing** | Push, PRs, Weekly | Cross-platform compatibility testing |
+| **Dependency Updates** | Weekly, Manual | Automated dependency updates and security audits |
+
+### Deployment Environments
+
+- **Development**: Auto-deploy on `develop` branch → Firebase App Distribution
+- **Staging**: Manual deployment → Internal testing tracks
+- **Production**: Auto-deploy on release → App Store & Google Play Store
+
+### Available Commands
+
+```bash
+# Development
+make setup          # Initial project setup
+make test           # Run all tests
+make build-debug    # Build debug APK
+make build-release  # Build release APK and AAB
+
+# Code Quality
+make format         # Format Dart code
+make analyze        # Run static analysis
+make ci-test        # Run full CI test suite locally
+
+# Deployment
+make deploy-dev     # Deploy to development environment
+make deploy-prod    # Deploy to production
+
+# Docker
+make docker-build   # Build with Docker
+make docker-test    # Run tests in Docker
+```
+
+For detailed CI/CD documentation, see [docs/CICD.md](docs/CICD.md).
 
 ## 🏗 Project Structure
 

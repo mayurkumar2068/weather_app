@@ -1,0 +1,137 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  code-quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Needed for SonarCloud
+        
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.0'
+        channel: 'stable'
+        cache: true
+        
+    - name: Create .env file
+      run: |
+        echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env
+        echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> .env
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Run code formatting check
+      run: dart format --output=none --set-exit-if-changed .
+      
+    - name: Run static analysis
+      run: flutter analyze --fatal-infos
+      
+    - name: Run tests with coverage
+      run: flutter test --coverage
+      
+    - name: Generate LCOV report
+      run: |
+        # Remove generated files from coverage
+        lcov --remove coverage/lcov.info \
+          '*/generated/*' \
+          '*/l10n/*' \
+          '*/test/*' \
+          '*/.dart_tool/*' \
+          -o coverage/lcov_cleaned.info
+          
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: coverage/lcov_cleaned.info
+        token: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: false
+        
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
+    - name: Check code metrics
+      run: |
+        echo "## Code Metrics Report" > code-metrics.md
+        echo "" >> code-metrics.md
+        echo "### Lines of Code" >> code-metrics.md
+        find lib -name "*.dart" -exec wc -l {} + | tail -1 >> code-metrics.md
+        echo "" >> code-metrics.md
+        echo "### File Count" >> code-metrics.md
+        find lib -name "*.dart" | wc -l >> code-metrics.md
+        echo "" >> code-metrics.md
+        echo "### Test Coverage" >> code-metrics.md
+        echo "See Codecov report for detailed coverage information" >> code-metrics.md
+        
+    - name: Upload code metrics
+      uses: actions/upload-artifact@v4
+      with:
+        name: code-metrics
+        path: code-metrics.md
+        retention-days: 30
+        
+  lint-commit-messages:
+    name: Lint Commit Messages
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Lint commit messages
+      uses: wagoid/commitlint-github-action@v5
+      with:
+        configFile: '.commitlintrc.json'
+        
+  check-dependencies:
+    name: Check Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.0'
+        channel: 'stable'
+        cache: true
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Check for outdated dependencies
+      run: |
+        flutter pub outdated --json > outdated-deps.json
+        echo "## Outdated Dependencies Report" > deps-report.md
+        echo "" >> deps-report.md
+        echo "Generated on: $(date)" >> deps-report.md
+        echo "" >> deps-report.md
+        echo "Run \`flutter pub outdated\` locally for detailed information." >> deps-report.md
+        
+    - name: Upload dependency report
+      uses: actions/upload-artifact@v4
+      with:
+        name: dependency-report
+        path: |
+          outdated-deps.json
+          deps-report.md
+        retention-days: 30
