@@ -81,21 +81,21 @@ class GlasscastApp extends StatelessWidget {
         ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: Colors.white.withOpacity(0.1),
+          fillColor: Colors.white.withValues(alpha: 0.1),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.white.withOpacity(0.2)),
+            borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.white.withOpacity(0.2)),
+            borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: Color(0xFF3B82F6), width: 2),
           ),
-          hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
-          labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+          hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
+          labelStyle: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
         ),
       ),
       initialRoute: initialRoute,

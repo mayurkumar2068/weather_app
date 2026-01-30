@@ -34,10 +34,10 @@ class SettingsScreen extends ConsumerWidget {
           child: Column(
             children: [
               // Header
-              Padding(
-                padding: const EdgeInsets.all(20),
+              const Padding(
+                padding: EdgeInsets.all(20),
                 child: Row(
-                  children: const [
+                  children: [
                     SizedBox(width: 48), // Balance
                     Expanded(
                       child: Text(
@@ -67,7 +67,7 @@ class SettingsScreen extends ConsumerWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           letterSpacing: 1,
                         ),
                       ),
@@ -81,7 +81,7 @@ class SettingsScreen extends ConsumerWidget {
                           children: [
                             Icon(
                               Icons.thermostat,
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                               size: 24,
                             ),
                             const SizedBox(width: 16),
@@ -104,7 +104,8 @@ class SettingsScreen extends ConsumerWidget {
                                         : "Fahrenheit",
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: Colors.white.withOpacity(0.7),
+                                      color:
+                                          Colors.white.withValues(alpha: 0.7),
                                     ),
                                   ),
                                 ],
@@ -118,10 +119,12 @@ class SettingsScreen extends ConsumerWidget {
                                     .toggleUnit();
                               },
                               activeColor: const Color(0xFF3B82F6),
-                              activeTrackColor:
-                                  const Color(0xFF3B82F6).withOpacity(0.3),
-                              inactiveThumbColor: Colors.white.withOpacity(0.7),
-                              inactiveTrackColor: Colors.white.withOpacity(0.2),
+                              activeTrackColor: const Color(0xFF3B82F6)
+                                  .withValues(alpha: 0.3),
+                              inactiveThumbColor:
+                                  Colors.white.withValues(alpha: 0.7),
+                              inactiveTrackColor:
+                                  Colors.white.withValues(alpha: 0.2),
                             ),
                           ],
                         ),
@@ -136,7 +139,7 @@ class SettingsScreen extends ConsumerWidget {
                           children: [
                             Icon(
                               Icons.notifications_outlined,
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                               size: 24,
                             ),
                             const SizedBox(width: 16),
@@ -171,10 +174,12 @@ class SettingsScreen extends ConsumerWidget {
                                     .toggleNotifications();
                               },
                               activeColor: const Color(0xFF3B82F6),
-                              activeTrackColor:
-                                  const Color(0xFF3B82F6).withOpacity(0.3),
-                              inactiveThumbColor: Colors.white.withOpacity(0.7),
-                              inactiveTrackColor: Colors.white.withOpacity(0.2),
+                              activeTrackColor: const Color(0xFF3B82F6)
+                                  .withValues(alpha: 0.3),
+                              inactiveThumbColor:
+                                  Colors.white.withValues(alpha: 0.7),
+                              inactiveTrackColor:
+                                  Colors.white.withValues(alpha: 0.2),
                             ),
                           ],
                         ),
@@ -189,7 +194,7 @@ class SettingsScreen extends ConsumerWidget {
                           children: [
                             Icon(
                               Icons.psychology_outlined,
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                               size: 24,
                             ),
                             const SizedBox(width: 16),
@@ -224,10 +229,12 @@ class SettingsScreen extends ConsumerWidget {
                                     .toggleAiSummary();
                               },
                               activeColor: const Color(0xFF3B82F6),
-                              activeTrackColor:
-                                  const Color(0xFF3B82F6).withOpacity(0.3),
-                              inactiveThumbColor: Colors.white.withOpacity(0.7),
-                              inactiveTrackColor: Colors.white.withOpacity(0.2),
+                              activeTrackColor: const Color(0xFF3B82F6)
+                                  .withValues(alpha: 0.3),
+                              inactiveThumbColor:
+                                  Colors.white.withValues(alpha: 0.7),
+                              inactiveTrackColor:
+                                  Colors.white.withValues(alpha: 0.2),
                             ),
                           ],
                         ),
@@ -240,7 +247,7 @@ class SettingsScreen extends ConsumerWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           letterSpacing: 1,
                         ),
                       ),
@@ -386,7 +393,7 @@ class SettingsScreen extends ConsumerWidget {
                                 decoration: BoxDecoration(
                                   color: appSettings.isPro
                                       ? const Color(0xFF3B82F6)
-                                      : Colors.white.withOpacity(0.2),
+                                      : Colors.white.withValues(alpha: 0.2),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
@@ -411,7 +418,7 @@ class SettingsScreen extends ConsumerWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           letterSpacing: 1,
                         ),
                       ),
@@ -427,7 +434,7 @@ class SettingsScreen extends ConsumerWidget {
                             children: [
                               Icon(
                                 Icons.star_outline,
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.white.withValues(alpha: 0.7),
                                 size: 24,
                               ),
                               const SizedBox(width: 16),
@@ -443,7 +450,7 @@ class SettingsScreen extends ConsumerWidget {
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
-                                color: Colors.white.withOpacity(0.5),
+                                color: Colors.white.withValues(alpha: 0.5),
                                 size: 16,
                               ),
                             ],
@@ -462,7 +469,7 @@ class SettingsScreen extends ConsumerWidget {
                             children: [
                               Icon(
                                 Icons.share_outlined,
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.white.withValues(alpha: 0.7),
                                 size: 24,
                               ),
                               const SizedBox(width: 16),
@@ -478,7 +485,7 @@ class SettingsScreen extends ConsumerWidget {
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
-                                color: Colors.white.withOpacity(0.5),
+                                color: Colors.white.withValues(alpha: 0.5),
                                 size: 16,
                               ),
                             ],
@@ -497,7 +504,7 @@ class SettingsScreen extends ConsumerWidget {
                             children: [
                               Icon(
                                 Icons.support_agent_outlined,
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.white.withValues(alpha: 0.7),
                                 size: 24,
                               ),
                               const SizedBox(width: 16),
@@ -513,7 +520,7 @@ class SettingsScreen extends ConsumerWidget {
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
-                                color: Colors.white.withOpacity(0.5),
+                                color: Colors.white.withValues(alpha: 0.5),
                                 size: 16,
                               ),
                             ],
@@ -532,7 +539,7 @@ class SettingsScreen extends ConsumerWidget {
                             children: [
                               Icon(
                                 Icons.privacy_tip_outlined,
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.white.withValues(alpha: 0.7),
                                 size: 24,
                               ),
                               const SizedBox(width: 16),
@@ -548,7 +555,7 @@ class SettingsScreen extends ConsumerWidget {
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
-                                color: Colors.white.withOpacity(0.5),
+                                color: Colors.white.withValues(alpha: 0.5),
                                 size: 16,
                               ),
                             ],
@@ -567,7 +574,7 @@ class SettingsScreen extends ConsumerWidget {
                             children: [
                               Icon(
                                 Icons.info_outline,
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.white.withValues(alpha: 0.7),
                                 size: 24,
                               ),
                               const SizedBox(width: 16),
@@ -583,7 +590,7 @@ class SettingsScreen extends ConsumerWidget {
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
-                                color: Colors.white.withOpacity(0.5),
+                                color: Colors.white.withValues(alpha: 0.5),
                                 size: 16,
                               ),
                             ],
@@ -606,7 +613,7 @@ class SettingsScreen extends ConsumerWidget {
                             children: [
                               Icon(
                                 Icons.logout,
-                                color: Colors.red.withOpacity(0.8),
+                                color: Colors.red.withValues(alpha: 0.8),
                                 size: 24,
                               ),
                               const SizedBox(width: 12),
@@ -615,7 +622,7 @@ class SettingsScreen extends ConsumerWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.red.withOpacity(0.8),
+                                  color: Colors.red.withValues(alpha: 0.8),
                                 ),
                               ),
                             ],

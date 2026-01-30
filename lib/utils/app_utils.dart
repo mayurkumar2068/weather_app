@@ -57,10 +57,14 @@ class AppUtils {
       if (await canLaunchUrl(url)) {
         await launchUrl(url, mode: LaunchMode.externalApplication);
       } else {
-        _showErrorSnackBar(context, 'Could not open app store');
+        if (context.mounted) {
+          _showErrorSnackBar(context, 'Could not open app store');
+        }
       }
     } catch (e) {
-      _showErrorSnackBar(context, 'Error opening app store');
+      if (context.mounted) {
+        _showErrorSnackBar(context, 'Error opening app store');
+      }
     }
   }
 
@@ -73,10 +77,14 @@ class AppUtils {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);
       } else {
-        _showErrorSnackBar(context, 'Could not open privacy policy');
+        if (context.mounted) {
+          _showErrorSnackBar(context, 'Could not open privacy policy');
+        }
       }
     } catch (e) {
-      _showErrorSnackBar(context, 'Error opening privacy policy');
+      if (context.mounted) {
+        _showErrorSnackBar(context, 'Error opening privacy policy');
+      }
     }
   }
 
@@ -97,7 +105,9 @@ class AppUtils {
         );
       }
     } catch (e) {
-      _showErrorSnackBar(context, 'Error sharing app');
+      if (context.mounted) {
+        _showErrorSnackBar(context, 'Error sharing app');
+      }
     }
   }
 
@@ -247,11 +257,12 @@ class AppUtils {
                 style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Name',
-                  labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+                  labelStyle:
+                      TextStyle(color: Colors.white.withValues(alpha: 0.7)),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide:
-                        BorderSide(color: Colors.white.withOpacity(0.3)),
+                        BorderSide(color: Colors.white.withValues(alpha: 0.3)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -265,11 +276,12 @@ class AppUtils {
                 style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+                  labelStyle:
+                      TextStyle(color: Colors.white.withValues(alpha: 0.7)),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide:
-                        BorderSide(color: Colors.white.withOpacity(0.3)),
+                        BorderSide(color: Colors.white.withValues(alpha: 0.3)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -284,7 +296,7 @@ class AppUtils {
               onPressed: () => Navigator.of(context).pop(),
               child: Text(
                 'Cancel',
-                style: TextStyle(color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
               ),
             ),
             TextButton(
@@ -315,7 +327,7 @@ class AppUtils {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -336,7 +348,7 @@ class AppUtils {
                   Text(
                     subtitle,
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withValues(alpha: 0.7),
                       fontSize: 12,
                     ),
                   ),
@@ -367,7 +379,9 @@ class AppUtils {
         }
       }
     } catch (e) {
-      _showErrorSnackBar(context, 'Error opening email');
+      if (context.mounted) {
+        _showErrorSnackBar(context, 'Error opening email');
+      }
     }
   }
 
@@ -389,7 +403,9 @@ class AppUtils {
         }
       }
     } catch (e) {
-      _showErrorSnackBar(context, 'Error opening email');
+      if (context.mounted) {
+        _showErrorSnackBar(context, 'Error opening email');
+      }
     }
   }
 

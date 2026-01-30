@@ -88,12 +88,12 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                     decoration: InputDecoration(
                       hintText: "Search for a city or airport",
                       hintStyle: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
+                        color: Colors.white.withValues(alpha: 0.6),
                         fontSize: 16,
                       ),
                       prefixIcon: Icon(
                         Icons.search,
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(vertical: 16),
@@ -120,7 +120,7 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           letterSpacing: 1,
                         ),
                       ),
@@ -135,7 +135,7 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                           child: Text(
                             "Error loading cities",
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                             ),
                           ),
                         ),
@@ -145,7 +145,7 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                               child: Text(
                                 "No saved cities yet",
                                 style: TextStyle(
-                                  color: Colors.white.withOpacity(0.7),
+                                  color: Colors.white.withValues(alpha: 0.7),
                                 ),
                               ),
                             );
@@ -209,7 +209,7 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 color: Colors.white
-                                                    .withOpacity(0.7),
+                                                    .withValues(alpha: 0.7),
                                               ),
                                             ),
                                           ],
@@ -240,8 +240,8 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                             },
                                             child: Icon(
                                               Icons.close,
-                                              color:
-                                                  Colors.white.withOpacity(0.7),
+                                              color: Colors.white
+                                                  .withValues(alpha: 0.7),
                                               size: 20,
                                             ),
                                           ),
@@ -264,7 +264,7 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                             letterSpacing: 1,
                           ),
                         ),
@@ -278,7 +278,7 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                             child: Text(
                               "Error searching cities",
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.white.withValues(alpha: 0.7),
                               ),
                             ),
                           ),
@@ -288,7 +288,7 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                 child: Text(
                                   "No cities found",
                                   style: TextStyle(
-                                    color: Colors.white.withOpacity(0.7),
+                                    color: Colors.white.withValues(alpha: 0.7),
                                   ),
                                 ),
                               );
@@ -315,7 +315,8 @@ class _CitySearchScreenState extends ConsumerState<CitySearchScreen> {
                                         "Lat: ${city.lat.toStringAsFixed(2)}, Lon: ${city.lon.toStringAsFixed(2)}",
                                         style: TextStyle(
                                           fontSize: 12,
-                                          color: Colors.white.withOpacity(0.6),
+                                          color: Colors.white
+                                              .withValues(alpha: 0.6),
                                         ),
                                       ),
                                       trailing: Container(

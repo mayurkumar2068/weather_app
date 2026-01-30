@@ -116,14 +116,14 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                             Icon(
                               Icons.location_off,
                               size: 64,
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                             ),
                             const SizedBox(height: 16),
                             Text(
                               "No city selected",
                               style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.white.withOpacity(0.8),
+                                color: Colors.white.withValues(alpha: 0.8),
                               ),
                             ),
                           ],
@@ -145,14 +145,14 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                             Icon(
                               Icons.error_outline,
                               size: 64,
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                             ),
                             const SizedBox(height: 16),
                             Text(
                               "Error loading weather data",
                               style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.white.withOpacity(0.8),
+                                color: Colors.white.withValues(alpha: 0.8),
                               ),
                             ),
                           ],
@@ -166,7 +166,7 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                           "No weather data available",
                           style: TextStyle(
                             fontSize: 18,
-                            color: Colors.white.withOpacity(0.8),
+                            color: Colors.white.withValues(alpha: 0.8),
                           ),
                         ),
                       );
@@ -230,7 +230,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                     children: [
                                       Icon(
                                         Icons.thermostat,
-                                        color: Colors.white.withOpacity(0.7),
+                                        color:
+                                            Colors.white.withValues(alpha: 0.7),
                                         size: 24,
                                       ),
                                       const SizedBox(height: 8),
@@ -238,7 +239,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                         "FEELS LIKE",
                                         style: TextStyle(
                                           fontSize: 12,
-                                          color: Colors.white.withOpacity(0.7),
+                                          color: Colors.white
+                                              .withValues(alpha: 0.7),
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -263,7 +265,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                     children: [
                                       Icon(
                                         Icons.water_drop_outlined,
-                                        color: Colors.white.withOpacity(0.7),
+                                        color:
+                                            Colors.white.withValues(alpha: 0.7),
                                         size: 24,
                                       ),
                                       const SizedBox(height: 8),
@@ -271,7 +274,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                         "HUMIDITY",
                                         style: TextStyle(
                                           fontSize: 12,
-                                          color: Colors.white.withOpacity(0.7),
+                                          color: Colors.white
+                                              .withValues(alpha: 0.7),
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -301,7 +305,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                     children: [
                                       Icon(
                                         Icons.air,
-                                        color: Colors.white.withOpacity(0.7),
+                                        color:
+                                            Colors.white.withValues(alpha: 0.7),
                                         size: 24,
                                       ),
                                       const SizedBox(height: 8),
@@ -309,7 +314,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                         "WIND SPEED",
                                         style: TextStyle(
                                           fontSize: 12,
-                                          color: Colors.white.withOpacity(0.7),
+                                          color: Colors.white
+                                              .withValues(alpha: 0.7),
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -334,7 +340,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                     children: [
                                       Icon(
                                         Icons.compress,
-                                        color: Colors.white.withOpacity(0.7),
+                                        color:
+                                            Colors.white.withValues(alpha: 0.7),
                                         size: 24,
                                       ),
                                       const SizedBox(height: 8),
@@ -342,7 +349,8 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                         "PRESSURE",
                                         style: TextStyle(
                                           fontSize: 12,
-                                          color: Colors.white.withOpacity(0.7),
+                                          color: Colors.white
+                                              .withValues(alpha: 0.7),
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -411,7 +419,7 @@ class _WeatherDetailScreenState extends ConsumerState<WeatherDetailScreen> {
                                               style: TextStyle(
                                                 fontSize: 12,
                                                 color: Colors.white
-                                                    .withOpacity(0.7),
+                                                    .withValues(alpha: 0.7),
                                               ),
                                             ),
                                             const SizedBox(height: 8),

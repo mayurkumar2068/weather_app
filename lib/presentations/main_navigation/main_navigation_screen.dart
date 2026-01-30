@@ -39,7 +39,7 @@ class MainNavigationScreen extends ConsumerWidget {
         color: Colors.transparent,
         border: Border(
           top: BorderSide(
-            color: Colors.white.withOpacity(0.1),
+            color: Colors.white.withValues(alpha: 0.1),
             width: 1,
           ),
         ),
@@ -49,10 +49,10 @@ class MainNavigationScreen extends ConsumerWidget {
           filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.15),
+              color: Colors.black.withValues(alpha: 0.15),
               border: Border(
                 top: BorderSide(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   width: 0.5,
                 ),
               ),
@@ -115,12 +115,13 @@ class MainNavigationScreen extends ConsumerWidget {
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
           decoration: BoxDecoration(
-            color:
-                isActive ? Colors.white.withOpacity(0.25) : Colors.transparent,
+            color: isActive
+                ? Colors.white.withValues(alpha: 0.25)
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
             border: isActive
                 ? Border.all(
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.white.withValues(alpha: 0.3),
                     width: 1,
                   )
                 : null,
@@ -131,7 +132,7 @@ class MainNavigationScreen extends ConsumerWidget {
             children: [
               Icon(
                 icon,
-                color: Colors.white.withOpacity(isActive ? 1.0 : 0.6),
+                color: Colors.white.withValues(alpha: isActive ? 1.0 : 0.6),
                 size: isActive ? 20 : 18,
               ),
               const SizedBox(height: 1),
@@ -139,7 +140,7 @@ class MainNavigationScreen extends ConsumerWidget {
                 child: Text(
                   label,
                   style: TextStyle(
-                    color: Colors.white.withOpacity(isActive ? 1.0 : 0.6),
+                    color: Colors.white.withValues(alpha: isActive ? 1.0 : 0.6),
                     fontSize: 9,
                     fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
                   ),

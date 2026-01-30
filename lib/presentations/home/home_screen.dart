@@ -140,7 +140,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             formatTime(),
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withValues(alpha: 0.8),
                             ),
                           ),
                         ],
@@ -182,7 +182,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       child: Text(
                         "Error loading weather",
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
+                          color: Colors.white.withValues(alpha: 0.8),
                         ),
                       ),
                     ),
@@ -241,7 +241,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 "H: ${high.round()}°",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.white.withOpacity(0.8),
+                                  color: Colors.white.withValues(alpha: 0.8),
                                 ),
                               ),
                               const SizedBox(width: 20),
@@ -249,7 +249,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 "L: ${low.round()}°",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.white.withOpacity(0.8),
+                                  color: Colors.white.withValues(alpha: 0.8),
                                 ),
                               ),
                             ],
@@ -260,7 +260,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             "AI: Perfect for a light jacket today",
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                               fontStyle: FontStyle.italic,
                             ),
                           ),
@@ -293,7 +293,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600,
-                                          color: Colors.white.withOpacity(0.7),
+                                          color: Colors.white
+                                              .withValues(alpha: 0.7),
                                           letterSpacing: 1,
                                         ),
                                       ),
@@ -327,8 +328,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                           days[index],
                                           style: TextStyle(
                                             fontSize: 12,
-                                            color:
-                                                Colors.white.withOpacity(0.7),
+                                            color: Colors.white
+                                                .withValues(alpha: 0.7),
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
@@ -350,8 +351,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                           "${(dayTemp - 5).round()}°",
                                           style: TextStyle(
                                             fontSize: 14,
-                                            color:
-                                                Colors.white.withOpacity(0.6),
+                                            color: Colors.white
+                                                .withValues(alpha: 0.6),
                                           ),
                                         ),
                                       ],
@@ -375,8 +376,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         children: [
                                           Icon(
                                             Icons.water_drop_outlined,
-                                            color:
-                                                Colors.white.withOpacity(0.7),
+                                            color: Colors.white
+                                                .withValues(alpha: 0.7),
                                             size: 20,
                                           ),
                                           const SizedBox(width: 8),
@@ -384,8 +385,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                             "HUMIDITY",
                                             style: TextStyle(
                                               fontSize: 12,
-                                              color:
-                                                  Colors.white.withOpacity(0.7),
+                                              color: Colors.white
+                                                  .withValues(alpha: 0.7),
                                               fontWeight: FontWeight.w500,
                                               letterSpacing: 1,
                                             ),
@@ -415,8 +416,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         children: [
                                           Icon(
                                             Icons.air,
-                                            color:
-                                                Colors.white.withOpacity(0.7),
+                                            color: Colors.white
+                                                .withValues(alpha: 0.7),
                                             size: 20,
                                           ),
                                           const SizedBox(width: 8),
@@ -424,8 +425,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                             "WIND",
                                             style: TextStyle(
                                               fontSize: 12,
-                                              color:
-                                                  Colors.white.withOpacity(0.7),
+                                              color: Colors.white
+                                                  .withValues(alpha: 0.7),
                                               fontWeight: FontWeight.w500,
                                               letterSpacing: 1,
                                             ),
