@@ -98,7 +98,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final weatherState = ref.watch(weatherProvider);
-    final cityState = ref.watch(cityProvider);
     final selectedCity = ref.watch(selectedCityProvider);
 
     return Scaffold(

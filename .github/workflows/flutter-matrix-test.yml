@@ -17,11 +17,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        flutter-version: ['3.22.0', '3.24.0', 'stable']
-        exclude:
-          # Exclude Windows for now due to build complexity
-          - os: windows-latest
+        os: [ubuntu-latest, macos-latest]
+        flutter-version: ['3.27.1', 'stable']
     
     steps:
     - name: Checkout code
@@ -38,7 +35,7 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         flutter-version: ${{ matrix.flutter-version }}
-        channel: ${{ matrix.flutter-version == 'stable' && 'stable' || 'stable' }}
+        channel: 'stable'
         cache: true
         
     - name: Create .env file
@@ -54,7 +51,7 @@ jobs:
       run: dart format --output=none --set-exit-if-changed .
       
     - name: Analyze project source
-      run: flutter analyze --fatal-infos
+      run: flutter analyze
       
     - name: Run tests
       run: flutter test

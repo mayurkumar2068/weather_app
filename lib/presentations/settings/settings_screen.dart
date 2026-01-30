@@ -37,9 +37,9 @@ class SettingsScreen extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Row(
-                  children: [
-                    const SizedBox(width: 48), // Balance
-                    const Expanded(
+                  children: const [
+                    SizedBox(width: 48), // Balance
+                    Expanded(
                       child: Text(
                         "Settings",
                         textAlign: TextAlign.center,
@@ -50,7 +50,7 @@ class SettingsScreen extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 48), // Balance
+                    SizedBox(width: 48), // Balance
                   ],
                 ),
               ),
